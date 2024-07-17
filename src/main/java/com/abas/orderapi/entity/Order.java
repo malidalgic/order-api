@@ -14,4 +14,8 @@ public class Order {
     private int itemNumber;
     private int quantity;
     private double unitPrice;
+
+    public double getTotalPrice() {
+        return this.quantity * this.unitPrice;
+    }
 }
