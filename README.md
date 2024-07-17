@@ -11,7 +11,7 @@ This project provides a basic order management API. It calculates the total amou
   - [Item Order Counts](#item-order-counts)
   - [Add New Order](#add-new-order)
  
-  - #### Total Amount
+ #### Total Amount
 
 Returns the average unit price of all orders.
 
