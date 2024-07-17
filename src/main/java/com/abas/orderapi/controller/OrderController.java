@@ -19,25 +19,28 @@ public class OrderController {
     private final OrderService orderService;
     private final List<Order> orders = OrderBuilder.getOrders();
 
-
     @GetMapping("/total-amount")
-    public double getTotalAmount() {
-        return orderService.getTotalAmount(orders);
+    public ResponseEntity<Map<String, Double>> getTotalAmount() {
+        double totalAmount = orderService.getTotalAmount(orders);
+        return ResponseEntity.ok(Map.of("totalAmount", totalAmount));
     }
 
     @GetMapping("/average-price")
-    public double getAveragePrice() {
-        return orderService.getAveragePrice(orders);
+    public ResponseEntity<Map<String, Double>> getAveragePrice() {
+        double averagePrice = orderService.getAveragePrice(orders);
+        return ResponseEntity.ok(Map.of("averagePrice", averagePrice));
     }
 
     @GetMapping("/average-prices-by-item")
-    public Map<Integer, Double> getAveragePricesByItem() {
-        return orderService.getAveragePricesByItem(orders);
+    public ResponseEntity<Map<Integer, Double>> getAveragePricesByItem() {
+        Map<Integer, Double> averagePricesByItem = orderService.getAveragePricesByItem(orders);
+        return ResponseEntity.ok(averagePricesByItem);
     }
 
     @GetMapping("/item-order-counts")
-    public Map<Integer, Map<Integer, Integer>> getItemOrderCounts() {
-        return orderService.getItemOrderCounts(orders);
+    public ResponseEntity<Map<Integer, Map<Integer, Integer>>> getItemOrderCounts() {
+        Map<Integer, Map<Integer, Integer>> itemOrderCounts = orderService.getItemOrderCounts(orders);
+        return ResponseEntity.ok(itemOrderCounts);
     }
 
     @PostMapping("/add")
